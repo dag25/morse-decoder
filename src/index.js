@@ -39,8 +39,19 @@ const MORSE_TABLE = {
 
 function decode(expr) {
     // write your solution here
+    let decoded = '';
+    let currentWord = '';
+    for (let i = 0; i < expr.length; i++) {
+        if (MORSE_TABLE[expr.slice(i, i + 3)]) {
+            currentWord += MORSE_TABLE[expr.slice(i, i + 3)];
+        } else {
+            decoded += currentWord +'';
+            currentWord = '';
+        }
+    }
+    return decoded.trim();  // remove trailing space if any
 }
 
 module.exports = {
     decode
-}
+};
